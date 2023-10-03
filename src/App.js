@@ -16,19 +16,11 @@ function App() {
         <Route path='/auth/register' element={<Register />} />
       </Routes>
       <UserAuthProvider>
-
-        <MainLayout >
-          <Routes>
-            <Route path='/user/dashboard' element={<Dashboard />} />
-            <Route path='/user/profile' element={<Profile />} />
-          </Routes>
-
-        </MainLayout>
-        {/* <MainLayout>
-
-        </MainLayout> */}
+        <Routes>
+          <Route path='/user/dashboard' element={<MainLayout ><Dashboard /></MainLayout>} />
+          <Route path='/user/profile' element={<MainLayout ><Profile /></MainLayout>} />
+        </Routes>
       </UserAuthProvider>
-
     </>
   );
 }
