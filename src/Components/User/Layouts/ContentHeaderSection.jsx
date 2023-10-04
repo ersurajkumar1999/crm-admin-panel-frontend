@@ -2,7 +2,6 @@ import React from 'react'
 
 export function ContentHeaderSection(props) {
     const { contentHeader } = props;
-    console.log("contentHeader==>",contentHeader)
     return (
         <>
             <section className="content-header">
