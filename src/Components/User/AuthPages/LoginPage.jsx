@@ -107,7 +107,7 @@ function LoginPage() {
                                     <span className="help-block small">{errors.password?.message}</span>
                                 </div>
                                 <div>
-                                    <button disabled={loading} className="btn btn-add"> {loading ? 'Logging in...' : 'Login'}</button>
+                                    <button disabled={loading} className="btn btn-add"> {loading ? 'Logging in...' : 'Login'}</button> &nbsp;
                                     <Link className="btn btn-warning" to="/auth/register">Register</Link>
                                 </div>
                             </form>

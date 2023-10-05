@@ -1,19 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import userAuth from '../../../Services/UserAuth';
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export function HeaderSection() {
   const navigate = useNavigate();
   const handleLogout = async (event) => {
     event.preventDefault();
-
     const logout = await userAuth.doLogOut();
     if (logout) {
       toast.success("User logged out");
       navigate('/auth/login');
+      setIsModalVisible(false);
     }
     console.log("logout==>", logout);
   }
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  // Function to handle the button click and show the modal
+  const handleShowModal = () => {
+    setIsModalVisible(true);
+  };
+  // Function to handle the "NO" button click and close the modal
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <>
       <ToastContainer
@@ -111,14 +122,11 @@ export function HeaderSection() {
                   <img src="assets/dist/img/avatar5.png" className="img-circle" width="45" height="45" alt="user" /></a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a href="profile.html">
-                      <i className="fa fa-user"></i> User Profile</a>
+                    <Link className="active" to="/user/profile">
+                      <i className="fa fa-user"></i> User Profile
+                    </Link>
                   </li>
-                  <li><a href="#"><i className="fa fa-inbox"></i> Inbox</a></li>
-                  <li><a href="login.html">
-                    <i className="fa fa-sign-out"></i> Signout</a>
-                  </li>
-                  <li> <a data-toggle="modal" data-target="#customer2" href='#'><i className="fa fa-sign-out"></i> Signout123</a>
+                  <li> <a data-toggle="modal" href='#' onClick={handleShowModal}><i className="fa fa-sign-out"></i> Signout123</a>
                   </li>
                 </ul>
               </li>
@@ -126,11 +134,13 @@ export function HeaderSection() {
           </div>
         </nav>
       </header>
-      <div className="modal fade" id="customer2" tabIndex="-1" role="dialog" aria-hidden="true">
+      <div className={`modal fade ${isModalVisible ? 'in' : ''}`} tabIndex="-1" role="dialog" style={{ display: isModalVisible ? 'block' : 'none' }}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header modal-header-primary">
-              <button type="button" className="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <button type="button" className="close" onClick={handleCloseModal} aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
               <h3><i className="fa fa-sign-out m-r-5"></i> Log Out</h3>
             </div>
             <div className="modal-body">
@@ -141,10 +151,8 @@ export function HeaderSection() {
                       <div className="col-md-12 form-group user-form-group">
                         <label className="control-label">Are you sure you want to log out?</label>
                         <div className="pull-right">
-                          <button type="button" className="btn btn-danger ml-3" data-dismiss="modal">NO</button> &nbsp;
+                          <button type="button" className="btn btn-danger ml-3" onClick={handleCloseModal}>NO</button> &nbsp;
                           <button type="button" className="btn btn-add ml-3" onClick={handleLogout}>YES</button>
-                          {/* <button type="button" className="btn btn-danger btn-sm">NO</button> */}
-                          {/* <button type="submit" className="btn btn-add btn-sm">YES</button> */}
                         </div>
                       </div>
                     </fieldset>
@@ -153,7 +161,7 @@ export function HeaderSection() {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-danger pull-left" onClick={handleCloseModal}>Close</button>
             </div>
           </div>
         </div>
