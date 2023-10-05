@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import userAuth from '../../../Services/UserAuth';
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 function LoginPage() {
     const [user, setUser] = useState(null);

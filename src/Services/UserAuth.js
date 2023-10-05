@@ -33,6 +33,14 @@ const userAuth = {
         } catch (error) {
             console.log(error)
         }
+    },
+    doLogOut: async () => {
+        try {
+            localStorage.clear();
+            return true;
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 export default userAuth;

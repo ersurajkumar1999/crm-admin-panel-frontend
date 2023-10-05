@@ -8,7 +8,7 @@ import { MainLayout } from './Components/User/Layouts/MainLayout';
 import Profile from './User/Profile';
 // import { useState } from 'react';
 import Protected from './Routes/User/Protected';
-
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>
