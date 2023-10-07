@@ -41,6 +41,22 @@ const userAuth = {
         } catch (error) {
             console.log(error);
         }
+    },
+    getUserToken: async () => {
+        try {
+            const crm_user = localStorage.getItem('crm_user');
+            let token = null;
+            if(crm_user!=null){
+                token = JSON.parse(crm_user)?.token;
+                const parts = token.split(' ');
+                token = parts[1];
+            }
+            return token;
+        }
+        catch (error) {
+            console.log(error);
+            return  null;
+        }
     }
 }
 export default userAuth;

@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import UserInfo from '../../Services/UserInfo';
 import { ContentHeaderSection } from '../../Components/User/Layouts/ContentHeaderSection'
 
 function Profile() {
+    const [user, setUser] = useState(null);
+
     const contentHeader = {
         icon: "fa fa-user-circle-o",
         titel: "Profile",
         subTitle: "Show user data in clear profile design",
     }
+    useEffect(()=>{
+        if(!user){
+          console.log("getUserById");
+          getUserById();
+        }
+      })
+      const getUserById = async () => {
+        const userInfo = await UserInfo.getUserById();
+        setUser(userInfo.data);
+      }
+
     return (
         <>
             <div className="content-wrapper">
@@ -29,7 +43,7 @@ function Profile() {
                                 </div>
                                 <div className="card-content">
                                     <div className="card-content-member text-center">
-                                        <h4 className="m-t-0">Alrazy</h4>
+                                        <h4 className="m-t-0">{user?.full_name}</h4>
                                         <p className="m-t-0">Dhaka</p>
                                     </div>
                                     <div className="card-content-languages">

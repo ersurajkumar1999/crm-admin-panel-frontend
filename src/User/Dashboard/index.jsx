@@ -1,16 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ContentHeaderSection } from '../../Components/User/Layouts/ContentHeaderSection'
+import UserInfo from '../../Services/UserInfo';
 
 function Dashboard() {
+  const [user, setUser] = useState(null);
   const contentHeader = {
     icon: "fa fa-dashboard",
     titel: "CRM Admin Dashboard",
     subTitle: "Welcome to CRM Admin Dashboard",
-}
+  }
+
+  useEffect(()=>{
+    if(!user){
+      console.log("getUserById");
+      getUserById();
+    }
+  })
+  const getUserById = async () => {
+    const userInfo = await UserInfo.getUserById();
+    setUser(userInfo.data);
+  }
   return (
     <>
       <div className="content-wrapper">
-        <ContentHeaderSection contentHeader = {contentHeader} />
+        <ContentHeaderSection contentHeader={contentHeader} />
         {/* <section className="content-header">
           <div className="header-icon">
             <i className="fa fa-dashboard"></i>
