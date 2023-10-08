@@ -29,16 +29,16 @@ function LoginPage() {
     async function onSubmit(e) {
         setLoading(true);
         const response = await userAuth.doLogin(e);
-        if (response.status) {
-            toast.success(response.message);
+        if (response?.status) {
+            toast.success(response?.message);
             localStorage.setItem('crm_user', JSON.stringify(response.data))
             localStorage.setItem('authenticated', JSON.stringify(true));
             console.log("response==>", response.data);
-            setUser(response.data);
+            setUser(response?.data);
             setLoading(false);
             navigate('/user/dashboard');
         } else {
-            toast.error(response.message);
+            toast.error(response?.message);
             setLoading(false);
         }
         //Backend API Call operation is handled here.

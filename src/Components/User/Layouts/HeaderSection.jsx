@@ -126,7 +126,7 @@ export function HeaderSection() {
                       <i className="fa fa-user"></i> User Profile
                     </Link>
                   </li>
-                  <li> <a data-toggle="modal" href='#' onClick={handleShowModal}><i className="fa fa-sign-out"></i> Signout123</a>
+                  <li> <a data-toggle="modal" href='#' onClick={handleShowModal}><i className="fa fa-sign-out"></i> Signout</a>
                   </li>
                 </ul>
               </li>

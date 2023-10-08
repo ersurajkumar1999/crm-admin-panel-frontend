@@ -4918,5 +4918,20 @@ table.text-center th {
         font-size: 16px;
     }
 }
-
-
+.remove-btn-outer{
+    background: #504a44;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.remove-btn{
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    color: #ffff;
+}

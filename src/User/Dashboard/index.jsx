@@ -18,7 +18,7 @@ function Dashboard() {
   })
   const getUserById = async () => {
     const userInfo = await UserInfo.getUserById();
-    setUser(userInfo.data);
+    setUser(userInfo?.data);
   }
   return (
     <>

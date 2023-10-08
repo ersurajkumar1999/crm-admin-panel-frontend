@@ -9,7 +9,7 @@ export function SidebarSection() {
           <ul className="sidebar-menu">
             <li>
               <Link className="active" to="/user/dashboard">
-                <i className="fa fa-tachometer"></i><span>Dashboard1212</span>
+                <i className="fa fa-tachometer"></i><span>Dashboard</span>
                 <span className="pull-right-container">
                 </span>
               </Link>
@@ -17,6 +17,13 @@ export function SidebarSection() {
             <li>
               <Link className="active" to="/user/profile">
                 <i className="fa fa-user"></i><span>Profile</span>
+                <span className="pull-right-container">
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link className="active" to="/user/mynetwork">
+                <i className="fa fa-sitemap"></i><span>My Network</span>
                 <span className="pull-right-container">
                 </span>
               </Link>

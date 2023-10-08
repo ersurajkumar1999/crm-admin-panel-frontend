@@ -9,6 +9,7 @@ import Profile from './User/Profile';
 // import { useState } from 'react';
 import Protected from './Routes/User/Protected';
 import 'react-toastify/dist/ReactToastify.css';
+import MyNetwork from './User/MyNetwork';
 function App() {
   return (
     <>
@@ -30,6 +31,14 @@ function App() {
           element={
             <Protected >
               <MainLayout ><Profile /></MainLayout>
+            </Protected>
+          }
+        />
+        <Route
+          path="/user/mynetwork"
+          element={
+            <Protected >
+              <MainLayout ><MyNetwork /></MainLayout>
             </Protected>
           }
         />
